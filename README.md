@@ -1,4 +1,4 @@
-# PythonExercises
+# Python Exercises
 This is a list of exercises I've completed from Codewars, done in the Python: 
 -----------------------------------------------------------
 
