@@ -1,0 +1,23 @@
+# Main objective of this excercise is to encode only letters (capital & lower) and leave other signs as they are. This is task from Codewars called Rot13.
+# ROT13 is a simple letter substitution cipher that replaces a letter with the letter 13 letters after it in the alphabet. ROT13 is an example of the Caesar cipher.
+# Create a function that takes a string and returns the string ciphered with Rot13. If there are numbers or special characters included in the string, they should be returned as they are. Only letters from the latin/english alphabet should be shifted, like in the original Rot13 "implementation".
+# Please note that using encode is considered cheating.
+
+def rot13(message):
+    i = 0
+    text_2 = ""
+    for x in message:
+        if ord(message[i]) > 109 and ord(message[i]) < 123:
+            text_2 += chr((ord(message[i])-13))
+        elif ord(message[i]) > 96 and ord(message[i]) < 111:
+            text_2 += chr(ord(message[i])+13)
+
+        elif ord(message[i]) > 77 and ord(message[i]) < 91:
+            text_2 += chr((ord(message[i])-13))
+
+        elif ord(message[i]) > 64 and ord(message[i]) < 78:
+            text_2 += chr(ord(message[i])+13)
+        else:
+            text_2 += chr(ord(message[i]))
+        i += 1
+    return text_2
