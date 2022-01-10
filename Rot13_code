@@ -11,10 +11,8 @@ def rot13(message):
             text_2 += chr((ord(message[i])-13))
         elif ord(message[i]) > 96 and ord(message[i]) < 111:
             text_2 += chr(ord(message[i])+13)
-
         elif ord(message[i]) > 77 and ord(message[i]) < 91:
             text_2 += chr((ord(message[i])-13))
-
         elif ord(message[i]) > 64 and ord(message[i]) < 78:
             text_2 += chr(ord(message[i])+13)
         else:
