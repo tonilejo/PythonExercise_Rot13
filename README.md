@@ -11,3 +11,5 @@ This is a list of exercises I've completed from Codewars, done in the Python:
 4.) **Highest and Lowest** - In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
 
 5.) **Row of the odd triangle** - Given a triangle of consecutive odd numbers find the triangle's row knowing its index.
+
+6.) **Product of consecutive Fib numbers** - Find numbers closest to the given product and if product is possible with fibb numbers
