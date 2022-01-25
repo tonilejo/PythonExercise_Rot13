@@ -15,3 +15,5 @@ This is a list of exercises I've completed from Codewars, done in the Python:
 6.) **Product of consecutive Fib numbers** - Find numbers closest to the given product and if product is possible with fibb numbers
 
 7.) **Strip Comments** - Complete the solution so that it strips all text that follows any of a set of comment markers passed in. Any whitespace at the end of the line should also be stripped out.
+
+8.) **Roman Numerals Encoder** - Create a function taking a positive integer as its parameter and returning a string containing the Roman Numeral representation of that integer.
