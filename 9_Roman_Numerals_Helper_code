@@ -1,0 +1,143 @@
+# Roman Numerals Helper
+# 
+# Create a RomanNumerals class that can convert a roman numeral to and from an integer value. It should follow the API demonstrated in the examples below. Multiple roman numeral values will be tested for each helper method.
+# 
+# Modern Roman numerals are written by expressing each digit separately starting with the left most digit and skipping any digit with a value of zero. In Roman numerals 1990 is rendered: 1000=M, 900=CM, 90=XC; resulting in MCMXC. 2008 is written as 2000=MM, 8=VIII; or MMVIII. 1666 uses each Roman symbol in descending order: MDCLXVI.
+# 
+# Input range : 1 <= n < 4000
+# 
+# In this kata 4 should be represented as IV, NOT as IIII (the "watchmaker's four").
+# 
+# Examples
+# RomanNumerals.to_roman(1000) # should return 'M'
+# RomanNumerals.from_roman('M') # should return 1000
+# -----------------------------------------------------------------------------------
+
+class RomanNumerals:
+
+    def to_roman(val):
+        number = val
+        i, j, digits, roman_number = 0, 1000, [], ""
+        while i < 4:
+            if number >= j:
+                digits.append(number // j) # striping to digits
+                number -= digits[i] * j
+            else:
+                digits.append(0)
+      # ----------------------------          
+            if i == 0:                            # first_digit
+                if digits[i] > 0:
+                    roman_number += (digits[i] * "M")
+      # ----------------------------
+            elif i == 1:                          # second_digit
+                if digits[i] > 0:
+                    if digits[i] < 4:               roman_number += digits[i] * "C";
+                    if digits[i] == 4:                         roman_number += "CD"
+                    if digits[i] > 4 and digits[i] < 9:        roman_number += "D" + ((digits[i] - 5) * "C")
+                    if digits[i] == 9 : roman_number += "CM"
+      # ----------------------------
+            elif i == 2:                          # third_digit
+                if digits[i] > 0:
+                    if digits[i] < 4:               roman_number += digits[i] * "X";
+                    if digits[i] == 4:                         roman_number += "XL"
+                    if digits[i] > 4 and digits[i] < 9:        roman_number += "L" + ((digits[i] - 5) * "X")
+                    if digits[i] == 9 : roman_number += "XC"
+      # ----------------------------
+            elif i == 3:                          # fourth_digit
+                if digits[i] > 0:
+                    if digits[i] < 4:               roman_number += digits[i] * "I";
+                    if digits[i] == 4:                         roman_number += "IV"
+                    if digits[i] > 4 and digits[i] < 9:        roman_number += "V" + ((digits[i] - 5) * "I")
+                    if digits[i] == 9 : roman_number += "IX"
+      # ----------------------------
+
+            j = int(j/10)
+            i += 1
+        print (roman_number)
+        return roman_number
+
+    def from_roman(roman_num):
+        list_roman = list(roman_num) #Convert string to list
+        integer = i = j = 0
+
+        while i < 4:
+            while list_roman[j] == "M" and i == 0:  # 1000
+                integer += 1000
+                if len(list_roman) == 1:
+                        break
+                list_roman.pop(j)
+#-----------------------------------------------------------------------
+            if i == 1:                              # 100
+                if len(list_roman) >= 2:
+                    if list_roman[j] == "C" and list_roman[j+1] == "M":
+                        integer += 900
+                        if len(list_roman) == 2:
+                            break
+                        list_roman.pop(j)
+                        list_roman.pop(j)
+                    elif list_roman[j] == "C" and list_roman[j+1] == "D":
+                        integer += 400
+                        if len(list_roman) == 2:
+                            break
+                        list_roman.pop(j)
+                        list_roman.pop(j)
+                    elif list_roman[j] == "D":
+                        integer += 500
+                        if len(list_roman) == 1:
+                            break
+                        list_roman.pop(j)
+                    while list_roman[j] == "C":
+                        integer += 100
+                        if len(list_roman) == 1:
+                            break
+                        list_roman.pop(j)
+#-----------------------------------------------------------------------
+            if i == 2:                              # 10
+                if len(list_roman) >= 2:
+                    if list_roman[j] == "X" and list_roman[j+1] == "C":
+                        integer += 90
+                        if len(list_roman) == 2:
+                            break
+                        list_roman.pop(j)
+                        list_roman.pop(j)
+                    elif list_roman[j] == "X" and list_roman[j+1] == "L":
+                        integer += 40
+                        if len(list_roman) == 2:
+                            break
+                        list_roman.pop(j)
+                        list_roman.pop(j)
+                if list_roman[j] == "L":
+                    integer += 50
+                    if len(list_roman) == 1:
+                        break
+                    list_roman.pop(j)
+                while list_roman[j] == "X":
+                    integer += 10
+                    if len(list_roman) == 1:
+                        break
+                    list_roman.pop(j)
+#-----------------------------------------------------------------------
+            if i == 3:  
+                if len(list_roman) >= 2:                            # 1
+                    if list_roman[j] == "I" and list_roman[j+1] == "X":
+                        integer += 9
+                        list_roman.pop(j)
+                        list_roman.pop(j)
+                    elif list_roman[j] == "I" and list_roman[j+1] == "V":
+                        integer += 4
+                        list_roman.pop(j)
+                        list_roman.pop(j)
+                if len(list_roman) >= 1:
+                    if list_roman[j] == "V":
+                        integer += 5
+                        list_roman.pop(j)
+                if len(list_roman) >= 1:
+                    if list_roman[j] == "I": 
+                        while list_roman[j] == "I":
+                            integer += 1
+                            if len(list_roman) == 1:
+                                break
+                            list_roman.pop(j)
+            i += 1
+
+        return integer
