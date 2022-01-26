@@ -1,5 +1,5 @@
 # Python Exercises
-This is a list of exercises I've completed from Codewars, done in the Python: 
+This is a list of exercises from Codewars I've completed in Python: 
 -----------------------------------------------------------
 
 1.) **ROT13** - is a simple letter substitution cipher that replaces a letter with the letter 13 letters after it in the alphabet
